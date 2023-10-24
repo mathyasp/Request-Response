@@ -36,6 +36,15 @@ def multiply(number1, number2):
         return 'Invalid inputs. Please try again by entering 2 numbers!'
     return f'{number1} times {number2} is {int(number1) * int(number2)}'
 
+# Sixth route (Say N Times)
+@app.route('/sayntimes/<word>/<n>')
+def say_n_times(word, n):
+    if not n.isdigit():
+        return 'Invalid input. Please try again by entering a word and a number!'
+    n_string = ''
+    for x in range(int(n)):
+        n_string += f"{word} "
+    return n_string
 
 # run the server
 if __name__ == '__main__':
