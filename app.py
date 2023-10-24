@@ -1,5 +1,6 @@
-# import flask
+# import libraries
 from flask import Flask
+import random
 
 # set up app variable
 app = Flask(__name__)
@@ -39,12 +40,24 @@ def multiply(number1, number2):
 # Sixth route (Say N Times)
 @app.route('/sayntimes/<word>/<n>')
 def say_n_times(word, n):
+    """Validate input, return string repeated n times"""
     if not n.isdigit():
         return 'Invalid input. Please try again by entering a word and a number!'
     n_string = ''
     for x in range(int(n)):
-        n_string += f"{word} "
+        n_string += f'{word} '
     return n_string
+
+# Seventh routh (Dice Game)
+@app.route('/dicegame')
+def dice_game():
+    """Choose random # from 1-6. If a 6, the user wins"""
+    user_roll = random.randint(1, 6)
+    user_message = f'You rolled a {user_roll}.'
+    if user_roll == 6:
+        return f'{user_message} You won!'
+    return f'{user_message} You lost!'
+
 
 # run the server
 if __name__ == '__main__':
