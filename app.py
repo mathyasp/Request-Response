@@ -28,6 +28,15 @@ def make_madlib(adjective, noun):
     """Display a madlib story based on the user's input adjective and noun"""
     return f'There once was a dog named Spot. His favorite toy was a {noun}. He loved his {adjective} {noun}.'
 
+# Fifth route (Multiply 2 numbers)
+@app.route('/multiply/<number1>/<number2>')
+def multiply(number1, number2):
+    """Validate input, display multiplication of 2 input numbers"""
+    if not number1.isdigit() or not number2.isdigit():
+        return 'Invalid inputs. Please try again by entering 2 numbers!'
+    return f'{number1} times {number2} is {int(number1) * int(number2)}'
+
+
 # run the server
 if __name__ == '__main__':
     app.run(debug=True)
